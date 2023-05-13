@@ -1,4 +1,4 @@
-# UrlChange
+# UrlChange to ssc
 # Checks for an updates to a given list of urls, and reports changes
 
 # Tested with Python version 3.7.6
