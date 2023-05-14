@@ -6,3 +6,4 @@ This is a bot that helps getting notice update from a college website [https://w
 Variable: 
 `CHAT_ID`
 `BOT_TOKEN`
+ch
