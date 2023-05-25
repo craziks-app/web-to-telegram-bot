@@ -32,7 +32,7 @@ def report_change(url):
     
     #select link of that text
     #link = soup.select_one("p.English > a")
-    test = soup.select_one("p.English > a").get_text()
+    test = soup.select_one("p.English > a[href]").get_text()
     notice = (re.sub(r'\n\s*\n', '\n', txt)).strip()
     
     file_name = ''.join(x for x in url if x.isalpha()) + ".txt"
@@ -76,7 +76,6 @@ def scan_url():
 
 # Initalize script to run every 5 second
 scan_url()
-print(" checking website")
 schedule.every(5).seconds.do(scan_url)
 while True:
     schedule.run_pending()
