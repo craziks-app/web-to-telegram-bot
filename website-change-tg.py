@@ -70,9 +70,9 @@ def scan_url():
         report_change(url)
         time.sleep(1)
 
-# Initalize script to run every 5 minutes
+# Initalize script to run every 5 second
 scan_url()
-schedule.every(30).seconds.do(scan_url)
+schedule.every(5).seconds.do(scan_url)
 while True:
     schedule.run_pending()
     time.sleep(1)
