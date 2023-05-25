@@ -30,9 +30,9 @@ def report_change(url):
     soup = bs.BeautifulSoup(html_response,'lxml')
     txt = soup.select_one("p.English > a").get_text()
     
-    #select link of that text
+    ####################################################select link of that text#####################################################
     #link = soup.select_one("p.English > a")
-    test = soup.find_all('a').get('href')
+    test = soup.find_all('a[href]').get('href')
     notice = (re.sub(r'\n\s*\n', '\n', txt)).strip()
     
     file_name = ''.join(x for x in url if x.isalpha()) + ".txt"
