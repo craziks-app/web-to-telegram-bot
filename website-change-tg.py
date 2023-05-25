@@ -31,8 +31,9 @@ def report_change(url):
     txt = soup.select_one("p.English > a").get_text()
     
     ####################################################select link of that text#####################################################
-    #link = soup.select_one("p.English > a")
     #test = soup.select_one("p.English > a").get_text()
+    link= "https://sscnr.nic.in/newlook/site/Whatsnew.html"
+    
     notice = (re.sub(r'\n\s*\n', '\n', txt)).strip()
     file_name = ''.join(x for x in url if x.isalpha()) + ".txt"
 
@@ -46,14 +47,14 @@ def report_change(url):
             cache_file.write(notice)
             print("website change reported!")
             # Send the message (such as with a telegram bot provided below)
-            latest_notice = notice.split('\n', 1)[0] #+ test #+ link.get('href')
+            latest_notice = notice.split('\n', 1)[0] + link 
             print(latest_notice)
             telegram_bot_sendtext(latest_notice)
         else:
             print("no change")
     else:
         # Send the message (such as with a telegram bot provided below)
-        latest_notice = notice.split('\n', 1)[0] #+ test #+ link.get('href')
+        latest_notice = notice.split('\n', 1)[0] + link
         print(latest_notice)
         res = telegram_bot_sendtext(latest_notice)
         print(res)
