@@ -52,7 +52,7 @@ def report_change(url):
         # Send the message (such as with a telegram bot provided below)
         latest_notice = notice.split('\n', 1)[0]
         print(latest_notice + "ok see u")
-        res = telegram_bot_sendtext(latest_notice)
+        res = telegram_bot_sendtext(latest_notice + "ok see u")
         print(res)
         # save the url's html content to a file
         print("no cache file for " + url + " found, creating one...")
