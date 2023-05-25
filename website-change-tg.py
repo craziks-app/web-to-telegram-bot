@@ -32,7 +32,7 @@ def report_change(url):
     
     #select link of that text
     #link = soup.select_one("p.English > a")
-    test = soup.select_one("p.English > a").get('href')
+    test = soup.select_one("p.English > a").get_text()
     notice = (re.sub(r'\n\s*\n', '\n', txt)).strip()
     
     file_name = ''.join(x for x in url if x.isalpha()) + ".txt"
