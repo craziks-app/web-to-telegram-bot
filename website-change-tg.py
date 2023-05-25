@@ -32,9 +32,9 @@ def report_change(url):
     
     ####################################################select link of that text#####################################################
     #link = soup.select_one("p.English > a")
-    test = soup.select_one("a").get('href')
+    tester = soup.select_one("p.English > a").get('href')
     notice = (re.sub(r'\n\s*\n', '\n', txt)).strip()
-    
+    test = (re.sub(r'\n\s*\', '\n', tester)).strip()
     file_name = ''.join(x for x in url if x.isalpha()) + ".txt"
 
     # Check if file exists that matches the page's content
