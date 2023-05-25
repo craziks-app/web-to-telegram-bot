@@ -44,14 +44,14 @@ def report_change(url):
             print("website change reported!")
             # Send the message (such as with a telegram bot provided below)
             latest_notice = notice.split('\n', 1)[0]
-            print(latest_notice)
-            telegram_bot_sendtext(latest_notice)
+            print(latest_notice + "ok see u")
+            telegram_bot_sendtext(latest_notice + "ok see u" )
         else:
             print("no change")
     else:
         # Send the message (such as with a telegram bot provided below)
         latest_notice = notice.split('\n', 1)[0]
-        print(latest_notice)
+        print(latest_notice + "ok see u")
         res = telegram_bot_sendtext(latest_notice)
         print(res)
         # save the url's html content to a file
