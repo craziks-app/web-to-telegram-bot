@@ -1,4 +1,4 @@
-# UrlChange to ssc
+# UrlChange
 # Checks for an updates to a given list of urls, and reports changes
 
 # Tested with Python version 3.7.6
@@ -29,12 +29,8 @@ def report_change(url):
     html_response = (requests.get(url)).text
     soup = bs.BeautifulSoup(html_response,'lxml')
     txt = soup.select_one("p.English > a").get_text()
-    
-    ####################################################select link of that text#####################################################
-    #test = soup.select_one("p.English > a").get_text()
-    link = "https://sscnr.nic.in/newlook/site/Whatsnew.html"
-    
     notice = (re.sub(r'\n\s*\n', '\n', txt)).strip()
+    
     file_name = ''.join(x for x in url if x.isalpha()) + ".txt"
 
     # Check if file exists that matches the page's content
@@ -49,14 +45,14 @@ def report_change(url):
             # Send the message (such as with a telegram bot provided below)
             latest_notice = notice.split('\n', 1)[0]
             print(latest_notice)
-            telegram_bot_sendtext("lastest update from sscnr" + latest_notice + link)
+            telegram_bot_sendtext(latest_notice)
         else:
             print("no change")
     else:
         # Send the message (such as with a telegram bot provided below)
         latest_notice = notice.split('\n', 1)[0]
         print(latest_notice)
-        res = telegram_bot_sendtext("latest update from sscnr" + latest_notice + link)
+        res = telegram_bot_sendtext(latest_notice)
         print(res)
         # save the url's html content to a file
         print("no cache file for " + url + " found, creating one...")
@@ -74,9 +70,9 @@ def scan_url():
         report_change(url)
         time.sleep(1)
 
-# Initalize script to run every 5 second
+# Initalize script to run every 5 minutes
 scan_url()
-schedule.every(5).seconds.do(scan_url)
+schedule.every(30).seconds.do(scan_url)
 while True:
     schedule.run_pending()
     time.sleep(1)
